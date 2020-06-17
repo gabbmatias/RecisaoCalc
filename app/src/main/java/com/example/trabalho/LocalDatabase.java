@@ -12,7 +12,7 @@ public abstract class LocalDatabase extends RoomDatabase {
 
     private static LocalDatabase INSTANCE;
 
-    public static LocalDatabase getDatabase(Context context){
+    public static LocalDatabase getDatabase(Context context) {
         if(INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), LocalDatabase.class, "Calculadora de Recisões").allowMainThreadQueries().build();
         }
