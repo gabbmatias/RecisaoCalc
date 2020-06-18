@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.List;
 
 public class FuncionarioList extends AppCompatActivity {
@@ -28,23 +29,30 @@ public class FuncionarioList extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         edtIntent = new Intent(this, FuncionarioView.class);
-        preencheFuncionarios();
+        preencheFuncionarioes();
     }
 
-    private void preencheFuncionarios() {
+    private void preencheFuncionarioes() {
         funcionarios = db.funcionarioModel().getAll();
-        ArrayAdapter<Funcionario> funcionarioAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, funcionarios);
-        listViewFuncionario.setAdapter(funcionarioAdapter);
+        ArrayAdapter<Funcionario> funcionariosAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, funcionarios);
+        listViewFuncionario.setAdapter(funcionariosAdapter);
         listViewFuncionario.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapter, View view, int position, long id){
-                Funcionario funcionarioSelecionado = funcionarios.get(position);
-                edtIntent.putExtra("FUNCIONARIO_SELECIONADO_ID", funcionarioSelecionado.funcionarioID);
+                Funcionario funcionarioselecionado = funcionarios.get(position);
+                edtIntent.putExtra("FUNCIONARIO_SELECIONADO_ID", funcionarioselecionado.funcionarioID);
                 startActivity(edtIntent);
             }
         });
     }
 
-    public void cadastrarFuncionario(View view) { startActivity(edtIntent); }
+    public void cadastrarFuncionario(View view) {
 
-    public void voltar(View view) { finish(); }
+        startActivity(edtIntent);
+
+    }
+
+    public void voltar(View view) {
+
+        finish();
+    }
 }

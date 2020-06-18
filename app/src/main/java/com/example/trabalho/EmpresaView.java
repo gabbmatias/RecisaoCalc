@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 
 public class EmpresaView extends AppCompatActivity {
 
@@ -22,6 +22,7 @@ public class EmpresaView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.view_empresas);
         db = LocalDatabase.getDatabase(getApplicationContext());
         edtEmpresa = findViewById(R.id.edtEmpresa);
         btnSalvar = findViewById(R.id.btnSalvarEmpresa);
@@ -29,10 +30,9 @@ public class EmpresaView extends AppCompatActivity {
         dbEmpresaID = getIntent().getIntExtra("EMPRESA_SELECIONADA_ID", -1);
     }
 
-    @Override
     protected void onResume() {
         super.onResume();
-        if (dbEmpresaID >= 0) {
+        if(dbEmpresaID >= 0) {
             getDBEmpresa();
         } else {
             btnExcluir.setVisibility(View.GONE);
@@ -44,11 +44,11 @@ public class EmpresaView extends AppCompatActivity {
         edtEmpresa.setText(dbEmpresa.getEmpresa());
     }
 
-    public void salvarEmpresa() {
+    public void salvarEmpresa(View view) {
         String nomeEmpresa = edtEmpresa.getText().toString();
 
         if (nomeEmpresa.equals("")) {
-            Toast.makeText(this, "O Nome da empresa não pode estar vazio", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "é necessário um nome para empresa.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -58,42 +58,42 @@ public class EmpresaView extends AppCompatActivity {
         if (dbEmpresa != null) {
             thisEmpresa.setEmpresaID(dbEmpresaID);
             db.empresaModel().update(thisEmpresa);
-            Toast.makeText(this, "Empresa atualizada com sucesso", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Empresa atualizada com sucesso.", Toast.LENGTH_SHORT).show();
         } else {
             db.empresaModel().insertAll(thisEmpresa);
-            Toast.makeText(this, "Empresa criada com sucesso", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Empresa criada com sucesso.", Toast.LENGTH_SHORT).show();
         }
 
         finish();
+
     }
 
     public void excluirEmpresa(View view) {
         new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle("Exclusão de Empresa")
-                .setMessage("Tem certeza que deseja excluir essa empresa?")
-                .setPositiveButton("sim", new DialogInterface.OnClickListener() {
+                .setMessage("Deseja excluir essa empresa?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         excluir();
                     }
                 })
-                .setNegativeButton("não", null)
+                .setNegativeButton("Não", null)
                 .show();
     }
 
-    public void excluir(){
+    private void excluir() {
         try {
             db.empresaModel().delete(dbEmpresa);
             Toast.makeText(this, "Empresa excluída com sucesso", Toast.LENGTH_SHORT).show();
         } catch (SQLiteConstraintException e) {
-            Toast.makeText(this, "Impossível excluir empresa com recisões pendentes", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Impossível excluir empresa com celulares cadastrados", Toast.LENGTH_SHORT).show();
         }
-
         finish();
     }
 
     public void voltar(View view) {
+
         finish();
     }
 }

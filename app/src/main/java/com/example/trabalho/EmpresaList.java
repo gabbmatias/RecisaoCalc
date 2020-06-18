@@ -7,6 +7,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
+
+
 import java.util.List;
 
 public class EmpresaList extends AppCompatActivity {
@@ -33,12 +35,12 @@ public class EmpresaList extends AppCompatActivity {
 
     private void preencheEmpresas() {
         empresas = db.empresaModel().getAll();
-        ArrayAdapter<Empresa> empresaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, empresas);
-        listViewEmpresas.setAdapter(empresaAdapter);
+        ArrayAdapter<Empresa> empresasAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, empresas);
+        listViewEmpresas.setAdapter(empresasAdapter);
         listViewEmpresas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Empresa marcaselecionada = empresas.get(position);
-                edtIntent.putExtra("EMPRESA_SELECIONADA_ID", marcaselecionada.empresaID);
+                Empresa empresaSelecionada = empresas.get(position);
+                edtIntent.putExtra("EMPRESA_SELECIONADA_ID", empresaSelecionada.empresaID);
                 startActivity(edtIntent);
             }
         });
