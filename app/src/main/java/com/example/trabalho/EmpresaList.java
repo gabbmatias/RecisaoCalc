@@ -16,11 +16,15 @@ public class EmpresaList extends AppCompatActivity {
     ListView listViewEmpresas;
     Intent edtIntent;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_empresas);
+        db = LocalDatabase.getDatabase(getApplicationContext());
+        listViewEmpresas = findViewById(R.id.listViewEmpresas);
     }
 
+    @Override
     protected void onResume() {
         super.onResume();
         edtIntent = new Intent(this, EmpresaView.class);
@@ -41,10 +45,14 @@ public class EmpresaList extends AppCompatActivity {
     }
 
     public void cadastrarEmpresa(View view) {
+
         startActivity(edtIntent);
+
     }
 
-    public void voltar() {
+    public void voltar(View view) {
+
         finish();
+
     }
 }

@@ -81,7 +81,7 @@ public class FuncionarioView extends AppCompatActivity {
 
         if (dbFuncionario != null) {
             novoFuncionario.setEmpresaID(dbFuncionarioID);
-            db.funcionarioModel().update(novoFuncionario);
+            db.funcionarioModel().updateName(novoFuncionario.getNome(), dbFuncionarioID);
             Toast.makeText(this, "Funcionário atualizado com sucesso", Toast.LENGTH_SHORT).show();
         } else {
             db.funcionarioModel().insertAll(novoFuncionario);

@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/listViewMarcas"
+        android:id="@+id/listViewEmpresas"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="50dp"
@@ -34,7 +34,7 @@
         android:layout_marginTop="50dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/listViewMarcas"
+        app:layout_constraintTop_toBottomOf="@+id/listViewEmpresas"
         tools:layout_editor_absoluteX="-52dp">
 
         <Button

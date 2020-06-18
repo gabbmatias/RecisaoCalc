@@ -1,9 +1,10 @@
 package com.example.trabalho;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(foreignKeys = @ForeignKey(entity = Empresa.class, parentColumns = "empresaID", childColumns = "empresaID"))
 public class Funcionario {
 
     @PrimaryKey(autoGenerate = true)
@@ -94,6 +95,7 @@ public class Funcionario {
         this.recisao = recisao;
     }
 
+    @Override
     public String toString() {
         return getFuncionarioID() + ": " + getNome() + " - $ " + getRecisao();
     }

@@ -17,11 +17,20 @@ public interface FuncionarioDao {
     @Query("SELECT * FROM Funcionario")
     List<Funcionario> getAll();
 
+    @Query("SELECT * FROM Funcionario WHERE funcionarioID IN (:funcionarioID)")
+    List<Funcionario> loadAllByIds(int[] funcionarioID);
+
+    @Query("SELECT * FROM Funcionario WHERE nome LIKE :name LIMIT 1")
+    Funcionario findByName(String name);
+
+    @Query("UPDATE Funcionario SET nome =:model WHERE funcionarioID == :funcionarioID")
+    void updateName(String model, int funcionarioID);
+
     @Insert
     void insertAll(Funcionario... funcionario);
 
-    @Update
-    void update(Funcionario funcionario);
+//    @Update
+//    void update(Funcionario funcionario);
 
     @Delete
     void delete(Funcionario funcionario);

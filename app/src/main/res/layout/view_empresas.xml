@@ -48,7 +48,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:background="@android:color/holo_red_light"
-                android:onClick="excluirMarca"
+                android:onClick="excluirEmpresa"
                 android:text="Excluir" />
 
             <Button

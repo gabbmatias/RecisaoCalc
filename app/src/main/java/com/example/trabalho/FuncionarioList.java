@@ -16,6 +16,7 @@ public class FuncionarioList extends AppCompatActivity {
     ListView listViewFuncionario;
     Intent edtIntent;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_funcionarios);

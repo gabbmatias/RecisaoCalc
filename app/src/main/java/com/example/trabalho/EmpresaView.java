@@ -19,6 +19,7 @@ public class EmpresaView extends AppCompatActivity {
     private int dbEmpresaID;
     private Empresa dbEmpresa;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = LocalDatabase.getDatabase(getApplicationContext());
@@ -28,6 +29,7 @@ public class EmpresaView extends AppCompatActivity {
         dbEmpresaID = getIntent().getIntExtra("EMPRESA_SELECIONADA_ID", -1);
     }
 
+    @Override
     protected void onResume() {
         super.onResume();
         if (dbEmpresaID >= 0) {
@@ -91,7 +93,7 @@ public class EmpresaView extends AppCompatActivity {
         finish();
     }
 
-    public void voltar() {
+    public void voltar(View view) {
         finish();
     }
 }

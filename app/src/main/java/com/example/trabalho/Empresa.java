@@ -11,7 +11,6 @@ public class Empresa {
     String empresa;
 
     public Empresa(){
-
     }
 
     public Empresa(int empresaID, String empresa){
