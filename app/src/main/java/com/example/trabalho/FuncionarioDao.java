@@ -29,8 +29,8 @@ public interface FuncionarioDao {
     @Insert
     void insertAll(Funcionario... funcionario);
 
-//    @Update
-//    void update(Funcionario funcionario);
+    @Update
+    void update(Funcionario funcionario);
 
     @Delete
     void delete(Funcionario funcionario);
