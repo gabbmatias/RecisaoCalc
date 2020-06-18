@@ -7,7 +7,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Empresa.class}, version = 1)
+@Database(entities = {Empresa.class, Funcionario.class}, version = 1)
 public abstract class LocalDatabase extends RoomDatabase {
 
     private static LocalDatabase INSTANCE;
@@ -18,6 +18,8 @@ public abstract class LocalDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
+
+    public abstract FuncionarioDao funcionarioModel();
 
     public abstract EmpresaDao empresaModel();
 }

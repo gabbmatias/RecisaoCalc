@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void listarEmpresas(View view) {
-        startActivity(new Intent(this, EmpresaList.class));
-    }
+    public void listarFuncionarios(View view) { startActivity(new Intent(this, FuncionarioList.class)); }
+
+    public void listarEmpresas(View view) { startActivity(new Intent(this, EmpresaList.class)); }
 }

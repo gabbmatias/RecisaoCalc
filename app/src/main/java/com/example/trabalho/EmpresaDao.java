@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface EmpresaDao {
 
-    @Query("SELECT * FROM Empresa WHERE empresaID = id: LIMIT 1")
+    @Query("SELECT * FROM Empresa WHERE empresaID = :id LIMIT 1")
     Empresa get(int id);
 
     @Query("SELECT * FROM Empresa")
