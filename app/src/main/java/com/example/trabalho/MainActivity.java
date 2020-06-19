@@ -17,4 +17,6 @@ public class MainActivity extends AppCompatActivity {
     public void listarFuncionarios(View view) { startActivity(new Intent(this, FuncionarioList.class)); }
 
     public void listarEmpresas(View view) { startActivity(new Intent(this, EmpresaList.class)); }
+
+    public void verificarRevolucao(View view) { startActivity(new Intent(this, FuncionarioAltView.class));}
 }

@@ -13,6 +13,7 @@
         <activity android:name=".FuncionarioView"></activity>
         <activity android:name=".EmpresaList"></activity>
         <activity android:name=".EmpresaView"></activity>
+        <activity android:name=".FuncionarioAltView"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

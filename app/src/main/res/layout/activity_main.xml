@@ -14,7 +14,7 @@
         android:layout_marginStart="176dp"
         android:layout_marginTop="75dp"
         android:layout_marginEnd="176dp"
-        android:text="Calculadora de"
+        android:text="Gerenciador de"
         android:textColor="@color/colorPrimary"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,5 +107,17 @@
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="145dp"
+        android:background="#00FFFFFF"
+        android:onClick="verificarRevolucao"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRecisoes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
