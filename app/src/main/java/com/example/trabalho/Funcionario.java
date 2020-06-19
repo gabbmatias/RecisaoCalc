@@ -97,6 +97,6 @@ public class Funcionario {
 
     @Override
     public String toString() {
-        return getFuncionarioID() + ": " + getNome() + " - $ " + getRecisao();
+        return getFuncionarioID() + ": " + getNome();
     }
 }
