@@ -87,9 +87,7 @@ public class Funcionario {
         this.salario = salario;
     }
 
-    public double getRecisao() {
-        return recisao;
-    }
+    public double getRecisao() { return recisao; }
 
     public void setRecisao(double recisao) {
         this.recisao = recisao;

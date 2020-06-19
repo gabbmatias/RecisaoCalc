@@ -1,6 +1,5 @@
 package com.example.trabalho;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,7 +12,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
+import java.text.DecimalFormat;
+import java.util.Formatter;
 import java.util.List;
 
 
@@ -75,6 +75,7 @@ public class FuncionarioView extends AppCompatActivity {
         edtFerias.setText(Integer.toString(dbFuncionario.getDiasFerias()));
         edtDiasAvisoPrevio.setText(Integer.toString(dbFuncionario.getDiasAvisoPrevio()));
         edtDiasTrabalhados.setText(Integer.toString(dbFuncionario.getDiasTrabalhados()));
+        textViewRecisao.setText(Double.toString(dbFuncionario.getRecisao()));
     }
 
     private void preencheEmpresas() {
@@ -117,13 +118,40 @@ public class FuncionarioView extends AppCompatActivity {
             return;
         }
 
+        //calculos da recisao
+        double valorDiaria = salario / 30;
+        int anosTrabalhados = diasTrabalhados/365;
+        int mesesTrabalhados = anosTrabalhados * 12;
+
+        //valor do aviso prévio
+        double totalAvisoPrevio = diasAvisoPrevio * valorDiaria + (3 * anosTrabalhados);
+
+        //fgts
+        double fgts = salario * 0.08;
+        double saldoFgts = fgts * mesesTrabalhados;
+        double totalFgts = saldoFgts + (saldoFgts * 0.4);
+
+        //salário Proporcional
+        double totalSalarioProporcional = (diasTrabalhados % 30) * valorDiaria;
+
+        //ferias
+        double valorDiaFerias = (salario + (salario / 3)) / 30;
+        double totalFeriasRemanescentes = valorDiaFerias * ferias;
+
+        //décimo terceiro
+        double valorMesDecimoTerceiro = salario/12;
+        double mesesProporcionais = (diasTrabalhados % 365) / 30;
+        double totalDecimoTerceiro = mesesProporcionais * valorMesDecimoTerceiro;
+
+        valorRecisao = totalAvisoPrevio + totalFgts + totalSalarioProporcional + totalFeriasRemanescentes + totalDecimoTerceiro;
+
         Funcionario novoFuncionario = new Funcionario();
         novoFuncionario.setNome(nome);
         novoFuncionario.setSalario(salario);
         novoFuncionario.setDiasTrabalhados(diasTrabalhados);
         novoFuncionario.setDiasFerias(ferias);
         novoFuncionario.setDiasAvisoPrevio(diasAvisoPrevio);
-//        novoFuncionario.setRecisao(valorRecisao);
+        novoFuncionario.setRecisao(valorRecisao);
         novoFuncionario.setEmpresaID(empresas.get(spnEmpresas.getSelectedItemPosition()).getEmpresaID());
 
         if(dbFuncionario != null){
@@ -169,9 +197,21 @@ public class FuncionarioView extends AppCompatActivity {
 
     public void calcularRecisao(View view) {
 
+        String tempSalario = edtSalario.getText().toString();
+        salario = Double.parseDouble(tempSalario);
+
+        String tempDiasTrabalhados = edtDiasTrabalhados.getText().toString();
+        diasTrabalhados = Integer.parseInt(tempDiasTrabalhados);
+
+        String tempFerias = edtFerias.getText().toString();
+        ferias = Integer.parseInt(tempFerias);
+
+        String tempDiasAvisoPrevio = edtDiasAvisoPrevio.getText().toString();
+        diasAvisoPrevio = Integer.parseInt(tempDiasAvisoPrevio);
+
         double valorDiaria = salario / 30;
-        double anosTrabalhados = diasTrabalhados/365;
-        double mesesTrabalhados = anosTrabalhados * 12;
+        int anosTrabalhados = diasTrabalhados/365;
+        int mesesTrabalhados = anosTrabalhados * 12;
 
         //valor do aviso prévio
         double totalAvisoPrevio = diasAvisoPrevio * valorDiaria + (3 * anosTrabalhados);
@@ -195,7 +235,11 @@ public class FuncionarioView extends AppCompatActivity {
 
         valorRecisao = totalAvisoPrevio + totalFgts + totalSalarioProporcional + totalFeriasRemanescentes + totalDecimoTerceiro;
 
-        textViewRecisao.setText(Double.toString(valorRecisao));
+//        String totalRecisao = Double.toString(valorRecisao)
+        String totalRecisao = Double.toString(valorRecisao);
+//        String novaRecisão = String.format("%.2f" , totalRecisao);
+
+        textViewRecisao.setText(totalRecisao);
 
     }
 }
