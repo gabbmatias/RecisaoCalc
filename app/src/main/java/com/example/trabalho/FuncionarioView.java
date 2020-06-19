@@ -89,15 +89,31 @@ public class FuncionarioView extends AppCompatActivity {
         String nome = edtNome.getText().toString();
 
         String tempSalario = edtSalario.getText().toString();
+        if (tempSalario.equals("")) {
+            Toast.makeText(this, "Informe o salário", Toast.LENGTH_SHORT).show();
+            return;
+        }
         salario = Double.parseDouble(tempSalario);
 
         String tempDiasTrabalhados = edtDiasTrabalhados.getText().toString();
+        if (tempDiasTrabalhados.equals("")) {
+            Toast.makeText(this, "Informe a quantidade de dias trabalhados", Toast.LENGTH_SHORT).show();
+            return;
+        }
         diasTrabalhados = Integer.parseInt(tempDiasTrabalhados);
 
         String tempFerias = edtFerias.getText().toString();
+        if (tempFerias.equals("")) {
+            Toast.makeText(this, "Informe a quantidade de férias restantes", Toast.LENGTH_SHORT).show();
+            return;
+        }
         ferias = Integer.parseInt(tempFerias);
 
         String tempDiasAvisoPrevio = edtDiasAvisoPrevio.getText().toString();
+        if (tempDiasAvisoPrevio.equals("")) {
+            Toast.makeText(this, "Informe a quantidade de dias de aviso prévio", Toast.LENGTH_SHORT).show();
+            return;
+        }
         diasAvisoPrevio = Integer.parseInt(tempDiasAvisoPrevio);
 
         String novaEmpresa = "";

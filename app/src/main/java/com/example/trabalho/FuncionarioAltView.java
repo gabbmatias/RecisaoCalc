@@ -48,15 +48,31 @@ public class FuncionarioAltView extends AppCompatActivity {
     public void verificarRecisao(View view) {
 
         String tempSalario = edtSalario.getText().toString();
+        if (tempSalario.equals("")) {
+            Toast.makeText(this, "Informe o salário, camarada", Toast.LENGTH_SHORT).show();
+            return;
+        }
         salario = Double.parseDouble(tempSalario);
 
         String tempDiasTrabalhados = edtDiasTrabalhados.getText().toString();
+        if (tempDiasTrabalhados.equals("")) {
+            Toast.makeText(this, "Informe a quantidade de dias trabalhados, camarada", Toast.LENGTH_SHORT).show();
+            return;
+        }
         diasTrabalhados = Integer.parseInt(tempDiasTrabalhados);
 
         String tempFerias = edtFerias.getText().toString();
+        if (tempFerias.equals("")) {
+            Toast.makeText(this, "Informe a quantidade de férias restantes, camarada", Toast.LENGTH_SHORT).show();
+            return;
+        }
         ferias = Integer.parseInt(tempFerias);
 
         String tempDiasAvisoPrevio = edtDiasAvisoPrevio.getText().toString();
+        if (tempDiasAvisoPrevio.equals("")) {
+            Toast.makeText(this, "Informe a quantidade de dias de aviso prévio, camarada", Toast.LENGTH_SHORT).show();
+            return;
+        }
         diasAvisoPrevio = Integer.parseInt(tempDiasAvisoPrevio);
 
         String tempRecisaoInformada = edtRecisaoInformada.getText().toString();
