@@ -57,9 +57,11 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:background="@color/colorPrimary"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@android:color/background_light"
                 android:onClick="salvarEmpresa"
                 android:text="Salvar" />
+
 
         </LinearLayout>
 

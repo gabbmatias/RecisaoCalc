@@ -60,7 +60,9 @@
                 android:layout_marginRight="5dp"
                 android:background="@color/colorPrimary"
                 android:onClick="cadastrarEmpresa"
-                android:text="Nova Empresa" />
+                android:text="Nova Empresa"
+                android:textColor="@android:color/background_light"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -87,29 +89,6 @@
                 android:inputType="number"
                 android:text="" />
         </LinearLayout>
-
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Férias Restantes: "
-            android:textSize="20dp" />
-
-        <EditText
-            android:id="@+id/edtFerias"
-            android:layout_width="228dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number"
-            android:text="" />
-    </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -140,6 +119,29 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Férias Restantes: "
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/edtFerias"
+                android:layout_width="228dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
                 android:id="@+id/textView22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -155,6 +157,31 @@
                 android:ems="10"
                 android:inputType="number"
                 android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:width="0dp"
+                android:text="Valor da Recisão:"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="30dp"
+                android:text="0.00"
+                android:textSize="20dp" />
         </LinearLayout>
 
 
@@ -187,14 +214,25 @@
                 android:text="Excluir" />
 
             <Button
-                android:id="@+id/btnSalvarFuncionario"
+                android:id="@+id/btnCalcular"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:background="@color/colorPrimary"
+                android:onClick="calcular"
+                android:text="Calcular" />
+
+            <Button
+                android:id="@+id/btnSalvarFuncionario"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/colorPrimaryDark"
                 android:onClick="salvarFuncionario"
-                android:text="Salvar" />
+                android:text="Salvar"
+                android:textColor="@android:color/background_light" />
 
 
         </LinearLayout>

@@ -19,7 +19,11 @@ public class FuncionarioView extends AppCompatActivity {
 
     LocalDatabase db;
     private EditText edtNome;
-    private Button btnSalvarFuncionario, btExcluir;
+    private EditText edtSalario;
+    private EditText edtFerias;
+    private EditText edtDiasTrabalhados;
+    private EditText edtAvisoPrevio;
+    private Button btExcluir;
     private int dbFuncionarioID;
     private Funcionario dbFuncionario;
     List<Empresa> empresas;
@@ -32,6 +36,10 @@ public class FuncionarioView extends AppCompatActivity {
         setContentView(R.layout.view_funcionarios);
         db = LocalDatabase.getDatabase(getApplicationContext());
         edtNome = findViewById(R.id.edtNome);
+        edtSalario = findViewById(R.id.edtSalario);
+        edtFerias = findViewById(R.id.edtFerias);
+        edtDiasTrabalhados = findViewById(R.id.edtDiasTrabalhados);
+        edtAvisoPrevio = findViewById(R.id.edtAvisoPrevio);
         btExcluir = findViewById(R.id.btnExcluirFuncionario);
         spnEmpresas = findViewById(R.id.spnEmpresas);
         dbFuncionarioID = getIntent().getIntExtra("FUNCIONARIO_SELECIONADO_ID", -1);
@@ -51,6 +59,10 @@ public class FuncionarioView extends AppCompatActivity {
     private void preencheFuncionario() {
         dbFuncionario = db.funcionarioModel().get(dbFuncionarioID);
         edtNome.setText(dbFuncionario.getNome());
+        edtSalario.setText(Double.toString(dbFuncionario.getSalario()));
+        edtFerias.setText(Integer.toString(dbFuncionario.getDiasFerias()));
+        edtAvisoPrevio.setText(Integer.toString(dbFuncionario.getDiasAvisoPrevio()));
+        edtDiasTrabalhados.setText(Integer.toString(dbFuncionario.getDiasTrabalhados()));
     }
 
     private void preencheEmpresas() {
@@ -64,6 +76,23 @@ public class FuncionarioView extends AppCompatActivity {
 
     public void salvarFuncionario(View view) {
         String nome = edtNome.getText().toString();
+
+        //captura e casting de salário
+        String tempSalario = edtSalario.getText().toString();
+        double salario = Double.parseDouble(tempSalario);
+
+        //captura e casting de ferias
+        String tempFerias = edtFerias.getText().toString();
+        int ferias = Integer.parseInt(tempFerias);
+
+        //captura e casting de dias trabalhados
+        String tempDiasTrabalhados = edtDiasTrabalhados.getText().toString();
+        int diasTrabalhados = Integer.parseInt(tempDiasTrabalhados);
+
+        //captura e casting de dias de aviso prévio
+        String tempAvisoPrevio = edtAvisoPrevio.getText().toString();
+        int avisoPrevio = Integer.parseInt(tempAvisoPrevio);
+
         String novaEmpresa = "";
 
         if(spnEmpresas.getSelectedItem() != null){
@@ -82,6 +111,10 @@ public class FuncionarioView extends AppCompatActivity {
 
         Funcionario novoFuncionario = new Funcionario();
         novoFuncionario.setNome(nome);
+        novoFuncionario.setSalario(salario);
+        novoFuncionario.setDiasFerias(ferias);
+        novoFuncionario.setDiasTrabalhados(diasTrabalhados);
+        novoFuncionario.setDiasAvisoPrevio(avisoPrevio);
         novoFuncionario.setEmpresaID(empresas.get(spnEmpresas.getSelectedItemPosition()).getEmpresaID());
 
         if(dbFuncionario != null){

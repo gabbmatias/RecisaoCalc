@@ -23,8 +23,8 @@ public interface FuncionarioDao {
     @Query("SELECT * FROM Funcionario WHERE nome LIKE :name LIMIT 1")
     Funcionario findByName(String name);
 
-    @Query("UPDATE Funcionario SET nome =:model WHERE funcionarioID == :funcionarioID")
-    void updateName(String model, int funcionarioID);
+//    @Query("UPDATE Funcionario SET nome =:model WHERE funcionarioID == :funcionarioID")
+//    void updateName(String model, int funcionarioID);
 
     @Insert
     void insertAll(Funcionario... funcionario);
