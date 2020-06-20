@@ -2,6 +2,12 @@
 Repositório com os arquivos do Trabalho de Programação para Dispositivos Móveis @ FACOM - UFMS
 
 
+Alunos: 
+Gabriel Matias		2018.1906.005-5
+Guilherme Jardim	2018.1906.010-1
+Ricardo Koester		2016.1906.018-3
+
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 
