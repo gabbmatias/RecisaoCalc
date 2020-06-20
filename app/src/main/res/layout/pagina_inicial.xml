@@ -77,7 +77,7 @@
 
     <Button
         android:id="@+id/btnUsuarios"
-        android:text="Meu Usuario"
+        android:text="Meus Usuarios"
         android:onClick="editarUsuario"
         android:layout_marginTop="30dp"
         android:background="@color/colorPrimary"
