@@ -65,7 +65,7 @@
         android:id="@+id/btnVoltar"
         android:background="@android:color/darker_gray"
         android:onClick="voltar"
-        android:text="Voltar"
+        android:text="Sair"
         android:layout_width="171dp"
         android:layout_height="56dp"
         android:layout_marginStart="16dp"
