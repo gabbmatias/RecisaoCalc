@@ -20,9 +20,6 @@ public interface UsuarioDao {
     @Query("SELECT * FROM Usuario")
     List<Usuario> getAll();
 
-    //@Query("SELECT senha FROM Usuario WHERE usuario = :usuario")
-    //void getSenha(String usuario);
-
     @Insert
     void insertAll(Usuario... usuario);
 

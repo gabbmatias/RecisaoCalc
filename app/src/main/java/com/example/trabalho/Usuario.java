@@ -8,18 +8,17 @@ public class Usuario {
 
     @PrimaryKey(autoGenerate = true)
     int usuarioId;
-    String unome, email, usuario, senha, senhaconfirm;
+    String unome, email, usuario, senha;
 
     public Usuario() {
     }
 
-    public Usuario(int usuarioId, String unome, String email, String usuario, String senha, String senhaconfirm) {
+    public Usuario(int usuarioId, String unome, String email, String usuario, String senha) {
         this.usuarioId = usuarioId;
         this.unome = unome;
         this.email = email;
         this.usuario = usuario;
         this.senha = senha;
-        this.senhaconfirm = senhaconfirm;
     }
 
     public int getUsuarioId() {
@@ -60,14 +59,6 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getSenhaconfirm() {
-        return senhaconfirm;
-    }
-
-    public void setSenhaconfirm(String senhaconfirm) {
-        this.senhaconfirm = senhaconfirm;
     }
 
     @Override

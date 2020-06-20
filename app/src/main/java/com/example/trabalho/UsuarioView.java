@@ -13,8 +13,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.security.spec.InvalidKeySpecException;
 import java.util.List;
+
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 
 public class UsuarioView extends AppCompatActivity {
 
@@ -60,11 +70,10 @@ public class UsuarioView extends AppCompatActivity {
         edtEmail.setText(dbUsuario.getEmail());
         edtUsuario.setText(dbUsuario.getUsuario());
         edtSenha.setText(dbUsuario.getSenha());
-        getEdtSenhaConfirm.setText(dbUsuario.getSenhaconfirm());
 
     }
 
-    public void salvarUsuario(View view) {
+    public void salvarUsuario(View view) throws NoSuchAlgorithmException, InvalidKeySpecException {
         String unome = edtUNome.getText().toString();
         if(unome.equals("")){
             Toast.makeText(this, "O nome é obrigatório", Toast.LENGTH_SHORT).show();
@@ -99,12 +108,14 @@ public class UsuarioView extends AppCompatActivity {
             return;
         }
 
+        String senhaCripto = generateStorngPasswordHash(senha);
+
+
         Usuario novoUsuario = new Usuario();
         novoUsuario.setUnome(unome);
         novoUsuario.setEmail(email);
         novoUsuario.setUsuario(usuario);
-        novoUsuario.setSenha(senha);
-        novoUsuario.setSenhaconfirm(senhaconfirm);
+        novoUsuario.setSenha(senhaCripto);
 
         if(dbUsuario != null){
             novoUsuario.setUsuarioId(dbUsuarioID);
@@ -116,6 +127,29 @@ public class UsuarioView extends AppCompatActivity {
         }
 
         finish();
+    }
+
+    private String generateStorngPasswordHash(String senha) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        int iterations = 1000;
+        char[] chars = senha.toCharArray();
+        byte[] salt = getSalt();
+
+        PBEKeySpec spec = new PBEKeySpec(chars, salt, iterations, 64 * 8);
+        SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+        byte[] hash = skf.generateSecret(spec).getEncoded();
+        return iterations + ":" + toHex(salt) + ":" + toHex(hash);
+    }
+
+    private String toHex(byte[] array) {
+        BigInteger bi = new BigInteger(1, array);
+        String hex = bi.toString(16);
+        int paddingLength = (array.length * 2) - hex.length();
+        if(paddingLength > 0)
+        {
+            return String.format("%0"  +paddingLength + "d", 0) + hex;
+        }else{
+            return hex;
+        }
     }
 
     public void excluirUsuario(View view) {
@@ -141,6 +175,14 @@ public class UsuarioView extends AppCompatActivity {
     public void voltar(View view) {
 
         finish();
+    }
+
+    private static byte[] getSalt() throws NoSuchAlgorithmException
+    {
+        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
+        byte[] salt = new byte[16];
+        sr.nextBytes(salt);
+        return salt;
     }
 
 }

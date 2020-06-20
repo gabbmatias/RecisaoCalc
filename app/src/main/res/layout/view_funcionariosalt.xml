@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Minha Recisão"
+            android:text="Nossa Recisão"
             android:layout_gravity="center"
             android:textColor="#FFEB3B"
             android:textSize="30sp" />
