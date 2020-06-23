@@ -3,9 +3,9 @@ Repositório com os arquivos do Trabalho de Programação para Dispositivos Móv
 
 
 Alunos: 
-Gabriel Matias		2018.1906.005-5
-Guilherme Jardim	2018.1906.010-1
-Ricardo Koester		2016.1906.018-3
+* Gabriel Matias		2018.1906.005-5
+* Guilherme Jardim	2018.1906.010-1
+* Ricardo Koester		2016.1906.018-3
 
 
 
@@ -38,18 +38,18 @@ O aplicativo possui um papél único de usuário
 
 Requisitos Funcionais: 
 
-R1- O usuário pode cadastrar uma empresa com os seguintes atributos: Nome;
-R2 - O usuário pode editar as informações de uma empresa
-R3- O usuário pode deletar uma empresa cadastrada
-R4 - O usuário pode listar as empresas cadastradas 
-R5 - O usuário pode cadastrar um funcionario com os seguintes atributos: Nome, Empresa, Salario, Dias Trabalhados, Férias Remanescentes, Dias de aviso prévio.
-R6 - O usuário pode editar as informações de um funcionário
-R7- O usuário pode deletar um funcionario cadastrado
-R8 - O usuário pode listar os funcionários cadastrados com o valor da rescisão
-R9 - O usuário pode se cadastrar no aplicativo
-R10 - O usuário pode logar no aplicativo
-R11 - O usuário pode editar o cadastro
-R12 - O usuário pode excluir o cadastro
+* R1- O usuário pode cadastrar uma empresa com os seguintes atributos: Nome;
+* R2 - O usuário pode editar as informações de uma empresa
+* R3- O usuário pode deletar uma empresa cadastrada
+* R4 - O usuário pode listar as empresas cadastradas 
+* R5 - O usuário pode cadastrar um funcionario com os seguintes atributos: Nome, Empresa, Salario, Dias Trabalhados, Férias Remanescentes, Dias de aviso prévio.
+* R6 - O usuário pode editar as informações de um funcionário
+* R7- O usuário pode deletar um funcionario cadastrado
+* R8 - O usuário pode listar os funcionários cadastrados com o valor da rescisão
+* R9 - O usuário pode se cadastrar no aplicativo
+* R10 - O usuário pode logar no aplicativo
+* R11 - O usuário pode editar o cadastro
+* R12 - O usuário pode excluir o cadastro
 
 
 
